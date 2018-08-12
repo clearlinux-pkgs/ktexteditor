@@ -1,8 +1,8 @@
-5.48.0
-ktextwidgets-dev
-solid-dev
-kwidgetsaddons-dev
-kjobwidgets-dev
-kitemviews-dev
-kxmlgui-dev
+5.49.0
 kiconthemes-dev
+kitemviews-dev
+kjobwidgets-dev
+ktextwidgets-dev
+kwidgetsaddons-dev
+kxmlgui-dev
+solid-dev
