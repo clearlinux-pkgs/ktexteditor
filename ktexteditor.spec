@@ -5,26 +5,27 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : ktexteditor
-Version  : 5.50.0
-Release  : 4
-URL      : https://download.kde.org/stable/frameworks/5.50/ktexteditor-5.50.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.50/ktexteditor-5.50.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.50/ktexteditor-5.50.0.tar.xz.sig
+Version  : 5.51.0
+Release  : 5
+URL      : https://download.kde.org/stable/frameworks/5.51/ktexteditor-5.51.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.51/ktexteditor-5.51.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.51/ktexteditor-5.51.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.0 LGPL-2.1
-Requires: ktexteditor-lib
-Requires: ktexteditor-data
-Requires: ktexteditor-license
-Requires: ktexteditor-locales
+Requires: ktexteditor-data = %{version}-%{release}
+Requires: ktexteditor-lib = %{version}-%{release}
+Requires: ktexteditor-license = %{version}-%{release}
+Requires: ktexteditor-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : extra-cmake-modules pkgconfig(libgit2)
 BuildRequires : karchive-dev
 BuildRequires : kcodecs-dev
 BuildRequires : kcompletion-dev
 BuildRequires : kguiaddons-dev
 BuildRequires : kparts-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 BuildRequires : sonnet-dev
 BuildRequires : syntax-highlighting-dev
 
@@ -42,9 +43,9 @@ data components for the ktexteditor package.
 %package dev
 Summary: dev components for the ktexteditor package.
 Group: Development
-Requires: ktexteditor-lib
-Requires: ktexteditor-data
-Provides: ktexteditor-devel
+Requires: ktexteditor-lib = %{version}-%{release}
+Requires: ktexteditor-data = %{version}-%{release}
+Provides: ktexteditor-devel = %{version}-%{release}
 
 %description dev
 dev components for the ktexteditor package.
@@ -53,8 +54,8 @@ dev components for the ktexteditor package.
 %package lib
 Summary: lib components for the ktexteditor package.
 Group: Libraries
-Requires: ktexteditor-data
-Requires: ktexteditor-license
+Requires: ktexteditor-data = %{version}-%{release}
+Requires: ktexteditor-license = %{version}-%{release}
 
 %description lib
 lib components for the ktexteditor package.
@@ -77,27 +78,27 @@ locales components for the ktexteditor package.
 
 
 %prep
-%setup -q -n ktexteditor-5.50.0
+%setup -q -n ktexteditor-5.51.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536439917
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1539640442
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1536439917
+export SOURCE_DATE_EPOCH=1539640442
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/ktexteditor
-cp COPYING.GPL-2 %{buildroot}/usr/share/doc/ktexteditor/COPYING.GPL-2
-cp COPYING.LGPL-2 %{buildroot}/usr/share/doc/ktexteditor/COPYING.LGPL-2
-cp COPYING.LIB %{buildroot}/usr/share/doc/ktexteditor/COPYING.LIB
+mkdir -p %{buildroot}/usr/share/package-licenses/ktexteditor
+cp COPYING.GPL-2 %{buildroot}/usr/share/package-licenses/ktexteditor/COPYING.GPL-2
+cp COPYING.LGPL-2 %{buildroot}/usr/share/package-licenses/ktexteditor/COPYING.LGPL-2
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/ktexteditor/COPYING.LIB
 pushd clr-build
 %make_install
 popd
@@ -115,6 +116,7 @@ popd
 /usr/share/kservices5/katepart.desktop
 /usr/share/kservicetypes5/ktexteditor.desktop
 /usr/share/kservicetypes5/ktexteditorplugin.desktop
+/usr/share/xdg/ktexteditor.categories
 
 %files dev
 %defattr(-,root,root,-)
@@ -188,14 +190,14 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5TextEditor.so.5
-/usr/lib64/libKF5TextEditor.so.5.50.0
+/usr/lib64/libKF5TextEditor.so.5.51.0
 /usr/lib64/qt5/plugins/kf5/parts/katepart.so
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/ktexteditor/COPYING.GPL-2
-/usr/share/doc/ktexteditor/COPYING.LGPL-2
-/usr/share/doc/ktexteditor/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/ktexteditor/COPYING.GPL-2
+/usr/share/package-licenses/ktexteditor/COPYING.LGPL-2
+/usr/share/package-licenses/ktexteditor/COPYING.LIB
 
 %files locales -f ktexteditor5.lang
 %defattr(-,root,root,-)
