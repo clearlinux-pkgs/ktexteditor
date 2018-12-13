@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : ktexteditor
-Version  : 5.52.0
-Release  : 7
-URL      : https://download.kde.org/stable/frameworks/5.52/ktexteditor-5.52.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.52/ktexteditor-5.52.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.52/ktexteditor-5.52.0.tar.xz.sig
+Version  : 5.53.0
+Release  : 8
+URL      : https://download.kde.org/stable/frameworks/5.53/ktexteditor-5.53.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.53/ktexteditor-5.53.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.53/ktexteditor-5.53.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.0 LGPL-2.1
@@ -78,22 +78,22 @@ locales components for the ktexteditor package.
 
 
 %prep
-%setup -q -n ktexteditor-5.52.0
+%setup -q -n ktexteditor-5.53.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542744947
+export SOURCE_DATE_EPOCH=1544659303
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1542744947
+export SOURCE_DATE_EPOCH=1544659303
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ktexteditor
 cp COPYING.GPL-2 %{buildroot}/usr/share/package-licenses/ktexteditor/COPYING.GPL-2
@@ -120,6 +120,7 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
+/usr/include/KF5/KTextEditor/KTextEditor/AbstractAnnotationItemDelegate
 /usr/include/KF5/KTextEditor/KTextEditor/AnnotationInterface
 /usr/include/KF5/KTextEditor/KTextEditor/Application
 /usr/include/KF5/KTextEditor/KTextEditor/Attribute
@@ -149,6 +150,7 @@ popd
 /usr/include/KF5/KTextEditor/KTextEditor/SessionConfigInterface
 /usr/include/KF5/KTextEditor/KTextEditor/TextHintInterface
 /usr/include/KF5/KTextEditor/KTextEditor/View
+/usr/include/KF5/KTextEditor/ktexteditor/abstractannotationitemdelegate.h
 /usr/include/KF5/KTextEditor/ktexteditor/annotationinterface.h
 /usr/include/KF5/KTextEditor/ktexteditor/application.h
 /usr/include/KF5/KTextEditor/ktexteditor/attribute.h
@@ -190,7 +192,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5TextEditor.so.5
-/usr/lib64/libKF5TextEditor.so.5.52.0
+/usr/lib64/libKF5TextEditor.so.5.53.0
 /usr/lib64/qt5/plugins/kf5/parts/katepart.so
 
 %files license
