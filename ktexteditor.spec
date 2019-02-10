@@ -5,12 +5,12 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : ktexteditor
-Version  : 5.54.0
-Release  : 10
-URL      : https://download.kde.org/stable/frameworks/5.54/ktexteditor-5.54.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.54/ktexteditor-5.54.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.54/ktexteditor-5.54.0.tar.xz.sig
-Summary  : Advanced embeddable text editor
+Version  : 5.55.0
+Release  : 11
+URL      : https://download.kde.org/stable/frameworks/5.55/ktexteditor-5.55.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.55/ktexteditor-5.55.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.55/ktexteditor-5.55.0.tar.xz.sig
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.0 LGPL-2.1
 Requires: ktexteditor-data = %{version}-%{release}
@@ -30,7 +30,7 @@ BuildRequires : sonnet-dev
 BuildRequires : syntax-highlighting-dev
 
 %description
-Test if the selection is adjusted correctly when moved down.
+Test if the selection is kept correctly when duplicating down.
 
 %package data
 Summary: data components for the ktexteditor package.
@@ -78,22 +78,22 @@ locales components for the ktexteditor package.
 
 
 %prep
-%setup -q -n ktexteditor-5.54.0
+%setup -q -n ktexteditor-5.55.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1547329417
+export SOURCE_DATE_EPOCH=1549764385
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1547329417
+export SOURCE_DATE_EPOCH=1549764385
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ktexteditor
 cp COPYING.GPL-2 %{buildroot}/usr/share/package-licenses/ktexteditor/COPYING.GPL-2
@@ -117,6 +117,7 @@ popd
 /usr/share/kservices5/katepart.desktop
 /usr/share/kservicetypes5/ktexteditor.desktop
 /usr/share/kservicetypes5/ktexteditorplugin.desktop
+/usr/share/polkit-1/actions/org.kde.ktexteditor.katetextbuffer.policy
 /usr/share/xdg/ktexteditor.categories
 
 %files dev
@@ -193,7 +194,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5TextEditor.so.5
-/usr/lib64/libKF5TextEditor.so.5.54.0
+/usr/lib64/libKF5TextEditor.so.5.55.0
 /usr/lib64/qt5/plugins/kf5/parts/katepart.so
 
 %files license
