@@ -6,7 +6,7 @@
 #
 Name     : ktexteditor
 Version  : 5.55.0
-Release  : 11
+Release  : 12
 URL      : https://download.kde.org/stable/frameworks/5.55/ktexteditor-5.55.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.55/ktexteditor-5.55.0.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.55/ktexteditor-5.55.0.tar.xz.sig
