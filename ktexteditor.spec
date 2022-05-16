@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : ktexteditor
-Version  : 5.93.0
-Release  : 49
-URL      : https://download.kde.org/stable/frameworks/5.93/ktexteditor-5.93.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.93/ktexteditor-5.93.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.93/ktexteditor-5.93.0.tar.xz.sig
+Version  : 5.94.0
+Release  : 50
+URL      : https://download.kde.org/stable/frameworks/5.94/ktexteditor-5.94.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.94/ktexteditor-5.94.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.94/ktexteditor-5.94.0.tar.xz.sig
 Summary  : Advanced embeddable text editor
 Group    : Development/Tools
 License  : BSD-2-Clause CC0-1.0 LGPL-2.0 MIT
@@ -83,15 +83,15 @@ locales components for the ktexteditor package.
 
 
 %prep
-%setup -q -n ktexteditor-5.93.0
-cd %{_builddir}/ktexteditor-5.93.0
+%setup -q -n ktexteditor-5.94.0
+cd %{_builddir}/ktexteditor-5.94.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1649710185
+export SOURCE_DATE_EPOCH=1652668567
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -107,15 +107,15 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1649710185
+export SOURCE_DATE_EPOCH=1652668567
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ktexteditor
-cp %{_builddir}/ktexteditor-5.93.0/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/ktexteditor/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e
-cp %{_builddir}/ktexteditor-5.93.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/ktexteditor/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
-cp %{_builddir}/ktexteditor-5.93.0/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/ktexteditor/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/ktexteditor-5.93.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/ktexteditor/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/ktexteditor-5.93.0/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/ktexteditor/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
-cp %{_builddir}/ktexteditor-5.93.0/templates/ktexteditor-plugin/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/ktexteditor/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/ktexteditor-5.94.0/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/ktexteditor/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e
+cp %{_builddir}/ktexteditor-5.94.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/ktexteditor/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
+cp %{_builddir}/ktexteditor-5.94.0/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/ktexteditor/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/ktexteditor-5.94.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/ktexteditor/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/ktexteditor-5.94.0/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/ktexteditor/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
+cp %{_builddir}/ktexteditor-5.94.0/templates/ktexteditor-plugin/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/ktexteditor/20079e8f79713dce80ab09774505773c926afa2a
 pushd clr-build
 %make_install
 popd
@@ -214,7 +214,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5TextEditor.so.5
-/usr/lib64/libKF5TextEditor.so.5.93.0
+/usr/lib64/libKF5TextEditor.so.5.94.0
 /usr/lib64/qt5/plugins/kf5/parts/katepart.so
 
 %files license
